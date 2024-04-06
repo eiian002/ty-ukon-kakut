@@ -972,7 +972,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &969041965
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2068,6 +2068,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1101860610}
   timerText: {fileID: 1332198171}
+  endText: {fileID: 0}
   GUI: {fileID: 1819871933}
   endScreen: {fileID: 969041964}
 --- !u!4 &2045948287
