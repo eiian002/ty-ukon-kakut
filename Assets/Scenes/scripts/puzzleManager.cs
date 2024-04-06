@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class puzzleManager : MonoBehaviour
 {
@@ -14,6 +15,10 @@ public class puzzleManager : MonoBehaviour
 
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI timerText;
+    public TextMeshProUGUI endText;
+
+    public GameObject GUI;
+    public GameObject endScreen;
 
     //timer
     private float TimeLeft = 60.00f;
@@ -50,6 +55,9 @@ public class puzzleManager : MonoBehaviour
                 TimeLeft = 0;
                 timeron = false;
                 //end game!
+                GUI.SetActive(false);
+                endText.text = "You've made " + score + " cakes!";
+                endScreen.SetActive(true);
             }
         }
     }
