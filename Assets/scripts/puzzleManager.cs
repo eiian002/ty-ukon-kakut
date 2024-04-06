@@ -28,6 +28,8 @@ public class puzzleManager : MonoBehaviour
     {
         currentPoints = 0;
         timeron = true;
+        endScreen.SetActive(false);
+        GUI.SetActive(true);
     }
     void Update()
     {
@@ -56,8 +58,8 @@ public class puzzleManager : MonoBehaviour
                 timeron = false;
                 //end game!
                 GUI.SetActive(false);
-                endText.text = "You've made " + score + " cakes!";
                 endScreen.SetActive(true);
+                endText.text = "You've made " + score + " cakes!";
             }
         }
     }

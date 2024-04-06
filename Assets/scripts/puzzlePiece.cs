@@ -25,6 +25,9 @@ public class puzzlePiece : MonoBehaviour
 
     //audiosource
     private AudioSource audioPlayer;
+    //animator
+    public Animator animator;
+
 
     private void Awake()
     {
@@ -71,12 +74,17 @@ public class puzzlePiece : MonoBehaviour
             placed = true;
             //tell minigamemanager the puzzle piece is on it's place
             minigamemanager.SendMessage("AddPoint");
+            animator.Play("happy");
+            animator.Play("blink");
         }
         else
         {
             //play sound effect (vittu perkele)
             transform.position = originalPosition;
             isDragged = false;
+            animator.Play("angry");
+            animator.Play("blink");
+
         }
 
     }
