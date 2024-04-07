@@ -23,6 +23,8 @@ public class puzzlePiece : MonoBehaviour
     //audioclip for piece grabbed
     [SerializeField] private AudioClip grabbedAudio;
 
+    [SerializeField] private AudioClip[] conveyor;
+
     //audiosource
     private AudioSource audioPlayer;
     //animator
@@ -103,6 +105,8 @@ public class puzzlePiece : MonoBehaviour
         transform.position = randomPositionOnScreen;
         isDragged = false;
         placed = false;
+        AudioClip randomconveyor = conveyor[Random.Range(0, conveyor.Length)];
+        audioPlayer.PlayOneShot(randomconveyor);
     }
 
 }
