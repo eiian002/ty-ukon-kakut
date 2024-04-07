@@ -24,12 +24,23 @@ public class puzzleManager : MonoBehaviour
     private float TimeLeft = 60.00f;
     private bool timeron;
 
+    //sounds
+    private AudioSource audioPlayer;
+    public AudioClip[] happy;
+    public AudioClip[] humm;
+
+    public bool keepPlaying = true;
+    private void Start()
+    {
+        StartCoroutine(Humming());
+    }
     private void Awake()
     {
         currentPoints = 0;
         timeron = true;
         endScreen.SetActive(false);
         GUI.SetActive(true);
+        audioPlayer = GetComponent<AudioSource>();
     }
     void Update()
     {
@@ -37,6 +48,8 @@ public class puzzleManager : MonoBehaviour
         {
             //Win puzzle game
             //reset puzzle
+            AudioClip randomhappy = happy[Random.Range(0, happy.Length)];
+            audioPlayer.PlayOneShot(randomhappy);
             score++;
             BroadcastMessage("ResetPuzzle");
             currentPoints = 0;
@@ -77,6 +90,17 @@ public class puzzleManager : MonoBehaviour
         float seconds = Mathf.FloorToInt(currentTime % 60);
 
         timerText.text = string.Format("{0:00} : {1:00}", minutes, seconds);
+    }
+
+    IEnumerator Humming()
+    {
+        while (keepPlaying)
+        {
+            AudioClip randomhumm = humm[Random.Range(0, humm.Length)];
+            GetComponent<AudioSource>().PlayOneShot(randomhumm);
+            Debug.Log("ChOO-ChOO");
+            yield return new WaitForSeconds(10);
+        }
     }
 }
 //1702

@@ -25,6 +25,8 @@ public class puzzlePiece : MonoBehaviour
 
     [SerializeField] private AudioClip[] conveyor;
 
+    [SerializeField] private AudioClip[] angry;
+
     //audiosource
     private AudioSource audioPlayer;
     //animator
@@ -84,6 +86,8 @@ public class puzzlePiece : MonoBehaviour
             //play sound effect (vittu perkele)
             transform.position = originalPosition;
             isDragged = false;
+            AudioClip randomangry = angry[Random.Range(0, angry.Length)];
+            audioPlayer.PlayOneShot(randomangry);
             animator.Play("angry");
             animator.Play("blink");
 
